@@ -2,7 +2,7 @@
   "name": "nodejs-assignmentor-fe",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@babel/plugin-transform-class-properties": "^7.22.5",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.11",
