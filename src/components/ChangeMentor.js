@@ -9,7 +9,7 @@ const ChangeMentor = () => {
 
   useEffect(() => {
     // Fetch all students from the backend
-    axios.get('/api/students')
+    axios.get('https://assign-mentor-k96m.onrender.com/api/students')
   .then((response) => {
     setStudents(response.data);
   })
@@ -19,7 +19,7 @@ const ChangeMentor = () => {
 
     // Fetch available mentors from the backend
     axios
-      .get('/api/mentors')
+      .get('https://assign-mentor-k96m.onrender.com/api/mentors')
       .then((response) => {
         setMentors(response.data);
       })
@@ -33,7 +33,7 @@ const ChangeMentor = () => {
     
     if (selectedStudent !== '' && selectedMentor !== '') {
       axios
-        .put(`/api/assign-mentor/${selectedStudent}`, {
+        .put(`https://assign-mentor-k96m.onrender.com/api/assign-mentor/${selectedStudent}`, {
           mentorId: selectedMentor,
         })
         .then((response) => {

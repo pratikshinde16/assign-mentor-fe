@@ -11,7 +11,7 @@ const ViewStudentDetails = () => {
       axios
         // .get(`http://localhost:3000/api/student-mentor/${studentId}`)
         // .get(`https://assign-mentor-k96m.onrender.com/api/student-mentor/${studentId}`)
-        .get(`/api/student-mentor/${studentId}`)
+        .get(`https://assign-mentor-k96m.onrender.com/api/student-mentor/${studentId}`)
 
         .then((response) => {
           setStudentDetails(response.data);

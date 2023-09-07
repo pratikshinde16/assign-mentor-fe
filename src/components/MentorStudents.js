@@ -10,7 +10,7 @@ const MentorStudents = () => {
     // Make an API request to fetch the list of mentors from your backend
     // You can use the fetch API or a library like Axios for this
     // Example using fetch:
-    fetch('/api/mentors') // Update the URL to match your API endpoint
+    fetch('https://assign-mentor-k96m.onrender.com/api/mentors') // Update the URL to match your API endpoint
       .then((response) => response.json())
       .then((data) => {
         setMentors(data);
@@ -25,7 +25,7 @@ const MentorStudents = () => {
     if (selectedMentor) {
       // Make an API request to fetch the students assigned to the selected mentor
       // Example using fetch:
-      fetch(`/api/mentor-students/${selectedMentor._id}`) // Update the URL to match your API endpoint
+      fetch(`https://assign-mentor-k96m.onrender.com/api/mentor-students/${selectedMentor._id}`) // Update the URL to match your API endpoint
         .then((response) => response.json())
         .then((data) => {
           setStudents(data);
