@@ -9,7 +9,7 @@ const CreateStudent = () => {
   useEffect(() => {
     // Fetch available mentors from the backend
     axios
-      .get('/api/mentors')
+      .get('https://assign-mentor-k96m.onrender.com/api/mentors') // Use the absolute URL
       .then((response) => {
         setAvailableMentors(response.data);
       })
@@ -26,7 +26,7 @@ const CreateStudent = () => {
     
     if (studentName.trim() !== '') {
       axios
-        .post('/api/students', {
+        .post('https://assign-mentor-k96m.onrender.com/api/students', { // Use the absolute URL
           name: studentName,
           mentor: mentorId, // Include selected mentor's ID or null in the request
         })
