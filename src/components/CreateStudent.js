@@ -4,15 +4,12 @@ import axios from 'axios';
 const CreateStudent = () => {
   const [studentName, setStudentName] = useState('');
   const [availableMentors, setAvailableMentors] = useState([]);
-  const [selectedMentor, setSelectedMentor] = useState('');
+  const [selectedMentor, setSelectedMentor] = useState(''); // Initialize with an empty string
 
   useEffect(() => {
     // Fetch available mentors from the backend
     axios
-      // .get('http://localhost:3000/api/mentors')
-      // .get('https://assign-mentor-k96m.onrender.com/api/mentors')
       .get('/api/mentors')
-
       .then((response) => {
         setAvailableMentors(response.data);
       })
@@ -23,34 +20,29 @@ const CreateStudent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (studentName.trim() !== '' && selectedMentor !== '') {
-      console.log('Selected Student:', studentName);
-      console.log('Selected Mentor ID:', selectedMentor);
-      
-      axios
-      // .post('http://localhost:3000/api/students', {
-      // .post('https://assign-mentor-k96m.onrender.com/api/students', {
-        .post('/api/students', {
-
-      name: studentName,
-        mentor: selectedMentor, // Include selected mentor's ID in the request
-      })
-      .then((response) => {
-        console.log('Student created successfully:', response.data);
-        // Clear the input fields after successful submission
-        setStudentName('');
-        setSelectedMentor('');
-      })
-      .catch((error) => {
-        console.error('Failed to create student:', error);
-      });
     
+    // Check if selectedMentor is an empty string (no mentor selected)
+    const mentorId = selectedMentor === '' ? null : selectedMentor;
+    
+    if (studentName.trim() !== '') {
+      axios
+        .post('/api/students', {
+          name: studentName,
+          mentor: mentorId, // Include selected mentor's ID or null in the request
+        })
+        .then((response) => {
+          console.log('Student created successfully:', response.data);
+          // Clear the input fields after successful submission
+          setStudentName('');
+          setSelectedMentor('');
+        })
+        .catch((error) => {
+          console.error('Failed to create student:', error);
+        });
     } else {
-      alert('Please enter a valid student name and select a mentor');
+      alert('Please enter a valid student name');
     }
   };
-  
-  
 
   return (
     <div>
@@ -67,7 +59,7 @@ const CreateStudent = () => {
         <label>
           Select Mentor:
           <select value={selectedMentor} onChange={(e) => setSelectedMentor(e.target.value)}>
-            <option value="">Select a Mentor</option>
+            <option value="">No Mentor</option> {/* Add an option for no mentor selected */}
             {availableMentors.map((mentor) => (
               <option key={mentor._id} value={mentor._id}>
                 {mentor.name}
