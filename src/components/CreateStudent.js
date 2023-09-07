@@ -9,7 +9,9 @@ const CreateStudent = () => {
   useEffect(() => {
     // Fetch available mentors from the backend
     axios
-      .get('http://localhost:3000/api/mentors')
+      // .get('http://localhost:3000/api/mentors')
+      .get('https://assign-mentor-k96m.onrender.com/api/mentors')
+
       .then((response) => {
         setAvailableMentors(response.data);
       })
@@ -22,7 +24,9 @@ const CreateStudent = () => {
     e.preventDefault();
     if (studentName.trim() !== '' && selectedMentor !== '') {
       axios
-        .post('http://localhost:3000/api/students', { name: studentName })
+        // .post('http://localhost:3000/api/students', { name: studentName })
+        .post('https://assign-mentor-k96m.onrender.com/api/students', { name: studentName })
+
         .then((response) => {
           console.log('Student created successfully:', response.data);
           // Clear the input fields after successful submission

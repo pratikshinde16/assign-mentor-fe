@@ -7,7 +7,9 @@ const MentorList = () => {
   useEffect(() => {
     // Fetch the list of mentors from the backend API
     axios
-      .get("http://localhost:3000/api/mentors")
+      // .get("http://localhost:3000/api/mentors")
+      .get("https://assign-mentor-k96m.onrender.com/api/mentors")
+
       .then((response) => {
         setMentors(response.data);
       })

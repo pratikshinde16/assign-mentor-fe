@@ -10,7 +10,9 @@ const AssignStudentToMentor = () => {
   useEffect(() => {
     // Fetch available mentors from the backend
     axios
-      .get('http://localhost:3000/api/mentors')
+      // .get('http://localhost:3000/api/mentors')
+      .get('https://assign-mentor-k96m.onrender.com/api/mentors')
+
       .then((response) => {
         setAvailableMentors(response.data);
       })
@@ -20,7 +22,8 @@ const AssignStudentToMentor = () => {
 
     // Fetch students without any mentor assigned from the backend
     axios
-      .get('http://localhost:3000/api/students-without-mentor')
+      // .get('http://localhost:3000/api/students-without-mentor')
+      .get('https://assign-mentor-k96m.onrender.com/api/students-without-mentor')
       .then((response) => {
         setStudentsWithoutMentor(response.data);
       })
@@ -33,7 +36,9 @@ const AssignStudentToMentor = () => {
     e.preventDefault();
     if (selectedMentor !== '' && selectedStudents.length > 0) {
       axios
-        .post(`http://localhost:3000/api/assign-mentor/${selectedMentor}`, { studentIds: selectedStudents })
+        // .post(`http://localhost:3000/api/assign-mentor/${selectedMentor}`, { studentIds: selectedStudents })
+        .post(`https://assign-mentor-k96m.onrender.com/api/assign-mentor/${selectedMentor}`, { studentIds: selectedStudents })
+
         .then((response) => {
           console.log('Students assigned to mentor successfully:', response.data);
           // Clear the selection after successful assignment

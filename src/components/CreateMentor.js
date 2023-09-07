@@ -8,7 +8,9 @@ const CreateMentor = () => {
     e.preventDefault();
     if (mentorName.trim() !== '') {
       axios
-        .post('http://localhost:3000/api/mentors', { name: mentorName }) // Change the URL
+        // .post('http://localhost:3000/api/mentors', { name: mentorName }) // Change the URL
+        .post('https://assign-mentor-k96m.onrender.com/api/mentors', { name: mentorName }) // Change the URL
+
         .then((response) => {
           console.log('Mentor created successfully:', response.data);
           // Clear the input field after successful submission
