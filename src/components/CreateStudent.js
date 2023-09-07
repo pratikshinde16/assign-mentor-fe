@@ -23,23 +23,31 @@ const CreateStudent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (studentName.trim() !== '' && selectedMentor !== '') {
+      console.log('Selected Student:', studentName);
+      console.log('Selected Mentor ID:', selectedMentor);
+      
       axios
-        // .post('http://localhost:3000/api/students', { name: studentName })
-        .post('https://assign-mentor-k96m.onrender.com/api/students', { name: studentName })
-
-        .then((response) => {
-          console.log('Student created successfully:', response.data);
-          // Clear the input fields after successful submission
-          setStudentName('');
-          setSelectedMentor('');
-        })
-        .catch((error) => {
-          console.error('Failed to create student:', error);
-        });
+      // .post('http://localhost:3000/api/students', {
+      .post('https://assign-mentor-k96m.onrender.com/api/students', {
+        name: studentName,
+        mentor: selectedMentor, // Include selected mentor's ID in the request
+      })
+      .then((response) => {
+        console.log('Student created successfully:', response.data);
+        // Clear the input fields after successful submission
+        setStudentName('');
+        setSelectedMentor('');
+      })
+      .catch((error) => {
+        console.error('Failed to create student:', error);
+      });
+    
     } else {
       alert('Please enter a valid student name and select a mentor');
     }
   };
+  
+  
 
   return (
     <div>
