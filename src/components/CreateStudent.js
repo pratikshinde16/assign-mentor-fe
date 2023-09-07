@@ -10,7 +10,8 @@ const CreateStudent = () => {
     // Fetch available mentors from the backend
     axios
       // .get('http://localhost:3000/api/mentors')
-      .get('https://assign-mentor-k96m.onrender.com/api/mentors')
+      // .get('https://assign-mentor-k96m.onrender.com/api/mentors')
+      .get('/api/mentors')
 
       .then((response) => {
         setAvailableMentors(response.data);
@@ -28,8 +29,10 @@ const CreateStudent = () => {
       
       axios
       // .post('http://localhost:3000/api/students', {
-      .post('https://assign-mentor-k96m.onrender.com/api/students', {
-        name: studentName,
+      // .post('https://assign-mentor-k96m.onrender.com/api/students', {
+        .post('/api/students', {
+
+      name: studentName,
         mentor: selectedMentor, // Include selected mentor's ID in the request
       })
       .then((response) => {

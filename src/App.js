@@ -1,11 +1,11 @@
-import React from "react";
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom"; 
-import Home from "./components/Home";
-import CreateMentor from "./components/CreateMentor";
-import CreateStudent from "./components/CreateStudent";
-import AssignStudentToMentor from "./components/AssignStudentToMentor";
-import ViewStudentDetails from "./components/ViewStudentDetails";
-import MentorList from "./components/MentorList";
+import React from 'react';
+import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'; 
+import Home from './components/Home';
+import CreateMentor from './components/CreateMentor';
+import CreateStudent from './components/CreateStudent';
+import AssignStudentToMentor from './components/AssignStudentToMentor';
+import ViewStudentDetails from './components/ViewStudentDetails';
+import MentorList from './components/MentorList';
 
 const App = () => {
   return (
